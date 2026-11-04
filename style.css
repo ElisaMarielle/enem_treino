@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --azul: #1d4ff0;
+    --azul-claro: #e0e8fa;
+    --fundo: #eef2fc;
+    --texto: #1a1d2b;
+    --cinza: #8b93a7;
+    --borda: #d5dbea;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 15px;
+}
+
+/* ---------- menu lateral (o header vira uma barra à esquerda) ---------- */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    background: white;
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+header h1 {
+    margin: 0 0 36px 0;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--texto);
+}
+
+header h1::before {
+    content: "E";
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 12px;
+    background: var(--azul);
+    color: white;
+    font-size: 30px;
+    font-weight: 800;
+    border-radius: 10px 10px 4px 10px;
+}
+
+header button {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: 0;
+    border-radius: 10px;
+    padding: 14px 12px;
+    color: var(--cinza);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+header button:hover {
+    background: var(--fundo);
+    color: var(--texto);
+}
+
+/* ---------- conteúdo ---------- */
+
+main {
+    margin-left: 250px;
+    padding: 36px 48px;
+    max-width: 1100px;
+}
+
+h2 {
+    margin: 0 0 20px 0;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+h3 {
+    margin: 28px 0 12px 0;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+p {
+    line-height: 1.6;
+}
+
+.tela {
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+}
+
+/* ---------- formulário ---------- */
+
+label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 12px 10px 0;
+    font-weight: 500;
+}
+
+label:has(input[type=checkbox]) {
+    padding: 10px 16px;
+    background: white;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+label:has(input[type=checkbox]:checked) {
+    border-color: var(--azul);
+    background: #eaf0ff;
+    color: var(--azul);
+    font-weight: 700;
+}
+
+input[type=checkbox] {
+    accent-color: var(--azul);
+    width: 16px;
+    height: 16px;
+}
+
+input[type=number],
+select {
+    padding: 12px 14px;
+    background: white;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--texto);
+}
+
+input:focus,
+select:focus,
+button:focus-visible {
+    outline: 3px solid #b9c7f8;
+    outline-offset: 1px;
+}
+
+/* ---------- botões ---------- */
+
+button {
+    padding: 13px 24px;
+    background: white;
+    border: 2px solid var(--azul);
+    border-radius: 14px;
+    color: var(--azul);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #eaf0ff;
+}
+
+button.principal {
+    background: var(--azul);
+    color: white;
+}
+
+button.principal:hover {
+    background: #163fc4;
+}
+
+button:disabled {
+    background: #8fabf7;
+    border-color: #8fabf7;
+    color: white;
+    cursor: default;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
+/* ---------- tela da questão ---------- */
+
+#tela-questao {
+    background: var(--azul-claro);
+    padding: 28px;
+}
+
+#info {
+    margin: 0 0 20px 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+#tempo {
+    display: inline-block;
+    margin: 0 0 14px 0;
+    padding: 8px 18px;
+    background: white;
+    border-radius: 20px;
+    color: var(--azul);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+#tempo:empty {
+    display: none;
+}
+
+#contexto {
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+    line-height: 1.9;
+}
+
+#contexto:empty {
+    display: none;
+}
+
+#introducao {
+    display: block;
+    margin: 24px 8px 6px 8px;
+    font-weight: 600;
+    line-height: 1.7;
+}
+
+.alternativa {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 18px 24px;
+    background: white;
+    border: 2px solid transparent;
+    border-radius: 16px;
+    color: #3a4156;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.alternativa b {
+    min-width: 26px;
+    color: var(--cinza);
+    font-weight: 700;
+}
+
+.alternativa b::after {
+    content: ")";
+}
+
+/* a bolinha de marcar, desenhada com css */
+.alternativa .texto::before {
+    content: "";
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    margin-right: 16px;
+    vertical-align: middle;
+    border: 2px solid var(--borda);
+    border-radius: 50%;
+    color: white;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: center;
+}
+
+.alternativa:hover {
+    background: white;
+    border-color: #b9c7f5;
+}
+
+.alternativa.marcada {
+    border-color: #6f7cf0;
+    background: #f4f6ff;
+}
+
+.alternativa.marcada .texto::before,
+.alternativa.errada .texto::before {
+    content: "✓";
+    background: #6f7cf0;
+    border-color: #6f7cf0;
+}
+
+.alternativa.certa {
+    background: #dff5e7;
+    border-color: #dff5e7;
+    cursor: default;
+}
+
+.alternativa.errada {
+    background: #f9dad8;
+    border-color: #f9dad8;
+    cursor: default;
+}
+
+#resultado-questao {
+    margin: 18px 4px 0 4px;
+    font-weight: 700;
+}
+
+/* ---------- listas e resultado ---------- */
+
+.linha {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.linha button:first-child {
+    flex: 1;
+    text-align: left;
+    border-color: var(--borda);
+    color: var(--texto);
+}
+
+.linha button:first-child:hover {
+    border-color: var(--azul);
+}
+
+#nota {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#resumo {
+    line-height: 2;
+    font-weight: 500;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* ---------- celular ---------- */
+
+@media (max-width: 800px) {
+    header {
+        position: static;
+        width: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 12px 16px;
+    }
+
+    header h1 {
+        margin: 0 auto 0 0;
+    }
+
+    header h1::before {
+        display: none;
+    }
+
+    header button {
+        width: auto;
+        padding: 8px 10px;
+    }
+
+    main {
+        margin-left: 0;
+        padding: 20px 14px;
+    }
+
+    .tela {
+        padding: 20px;
+    }
+
+    #tela-questao {
+        padding: 14px;
+    }
+
+    #contexto {
+        padding: 20px;
+    }
+
+    .alternativa {
+        padding: 14px;
+    }
+}

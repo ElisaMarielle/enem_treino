@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENEM Treino</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>ENEM Treino</h1>
+        <button onclick="sair('inicio')">Início</button>
+        <button id="btn-caderno-menu" onclick="sair('caderno')">Meu caderno (0)</button>
+        <button id="btn-erros-menu" onclick="sair('erros')">Caderno de erros (0)</button>
+    </header>
+    <main>
+        <!-- TELA 1: montar a prova -->
+        <section id="tela-inicio" class="tela">
+            <h2>Montar prova</h2>
+
+            <h3>Provas (pode marcar mais de uma)</h3>
+            <div id="anos">Carregando...</div>
+
+            <h3>Matérias (se não marcar nenhuma, vêm todas)</h3>
+            <label><input type="checkbox" class="materia" value="linguagens"> Linguagens</label>
+            <label><input type="checkbox" class="materia" value="ciencias-humanas"> Humanas</label>
+            <label><input type="checkbox" class="materia" value="ciencias-natureza"> Natureza</label>
+            <label><input type="checkbox" class="materia" value="matematica"> Matemática</label>
+
+            <h3>Configurações</h3>
+            <p>
+                <label>Quantidade de questões:
+                    <input type="number" id="quantidade" value="10" min="1" max="180">
+                </label>
+            </p>
+            <p>
+                <label>Língua estrangeira:
+                    <select id="lingua">
+                        <option value="ingles">Inglês</option>
+                        <option value="espanhol">Espanhol</option>
+                    </select>
+                </label>
+            </p>
+            <p>
+                <label>Modo:
+                    <select id="modo">
+                        <option value="livre">Sem tempo</option>
+                        <option value="tempo">Com tempo</option>
+                    </select>
+                </label>
+                <label>Minutos por questão:
+                    <input type="number" id="minutos" value="3" min="1" max="30">
+                </label>
+            </p>
+
+            <button class="principal" onclick="comecar()">Começar</button>
+            <p id="aviso"></p>
+        </section>
+
+        <!-- TELA 2: lista do caderno / caderno de erros -->
+        <section id="tela-lista" class="tela" hidden>
+            <h2 id="titulo-lista"></h2>
+            <p>Clique numa questão para refazer.</p>
+            <div id="lista"></div>
+        </section>
+
+        <!-- TELA 3: questão (serve para a prova e para o caderno) -->
+        <section id="tela-questao" class="tela" hidden>
+            <p id="tempo"></p>
+            <p id="info"></p>
+
+            <div id="contexto"></div>
+            <p><b id="introducao"></b></p>
+
+            <button class="alternativa" data-letra="A" onclick="marcar('A')"><b>A</b> <span class="texto"></span></button>
+            <button class="alternativa" data-letra="B" onclick="marcar('B')"><b>B</b> <span class="texto"></span></button>
+            <button class="alternativa" data-letra="C" onclick="marcar('C')"><b>C</b> <span class="texto"></span></button>
+            <button class="alternativa" data-letra="D" onclick="marcar('D')"><b>D</b> <span class="texto"></span></button>
+            <button class="alternativa" data-letra="E" onclick="marcar('E')"><b>E</b> <span class="texto"></span></button>
+
+            <p id="resultado-questao"></p>
+
+            <div class="botoes">
+                <button onclick="anterior()">← Anterior</button>
+                <button id="btn-conferir" class="principal" onclick="conferir()">Conferir resposta</button>
+                <button onclick="proxima()">Próxima →</button>
+            </div>
+            <div class="botoes">
+                <button id="btn-salvar" onclick="salvarNoCaderno()">Salvar no caderno</button>
+                <button id="btn-finalizar" onclick="finalizar(false)">Finalizar prova</button>
+                <button id="btn-resultado" onclick="mostrar('tela-resultado')">Ver resultado</button>
+                <button id="btn-voltar" onclick="abrirLista(listaAberta)">Voltar para a lista</button>
+            </div>
+        </section>
+
+        <!-- TELA 4: resultado -->
+        <section id="tela-resultado" class="tela" hidden>
+            <h2>Resultado</h2>
+            <p id="nota"></p>
+            <ul id="resumo"></ul>
+            <p>As questões que você errou foram para o caderno de erros.</p>
+            <div class="botoes">
+                <button onclick="verQuestoes()">Ver questões</button>
+                <button onclick="sair('erros')">Caderno de erros</button>
+                <button class="principal" onclick="sair('inicio')">Nova prova</button>
+            </div>
+        </section>
+    </main>
+<script src="script.js"></script>
+</body>
+</html>
